@@ -7,7 +7,7 @@ Jay-Synth is a synthesizer that plays the sound of the four basic wave shapes wi
 Steps to build and/or run the software:
 
 1. Open your terminal, and execute these commands below
-2. git clone https://github.com/<your-username>/Jay-Synth.git
+2. 
 3. cd Jay-Synth
 4. ./setup.sh
 
