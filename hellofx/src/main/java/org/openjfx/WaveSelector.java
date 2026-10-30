@@ -4,11 +4,13 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import java.util.function.Consumer;
 
 public class WaveSelector extends HBox {
     
     private Waveform waveform;
     private final Label nameLabel = new Label();
+    private Consumer<Waveform> onWaveformChanged;
 
     public WaveSelector() {
 
@@ -46,5 +48,12 @@ public class WaveSelector extends HBox {
     public void setWaveform(Waveform waveform) {
         this.waveform = waveform;
         nameLabel.setText(waveform.getDisplayName());
+        if (onWaveformChanged != null) {
+            onWaveformChanged.accept(waveform);
+        }
+    }
+
+    public void setOnWaveformChanged(Consumer<Waveform> listener) {
+        this.onWaveformChanged = listener;
     }
 }

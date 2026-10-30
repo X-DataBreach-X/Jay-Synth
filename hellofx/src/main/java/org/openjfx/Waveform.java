@@ -29,4 +29,15 @@ public enum Waveform {
         Waveform[] all = values();
         return all[(ordinal() - 1 + all.length) % all.length];
     }
+
+    // Returns the wave's value (-1 to 1) at a point in its cycle (phase 0 to 1)
+    public double sample(double phase){
+        switch (this) {
+            case SINE:      return Math.sin(2 * Math.PI * phase);
+            case SAW:       return 2 * phase - 1;
+            case SQUARE:    return phase < 0.5 ? 1 : -1;
+            case TRIANGLE:  return 1 - 4 * Math.abs(phase - 0.5);
+            default:        return 0;
+        }
+    }
 }
